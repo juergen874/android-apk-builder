@@ -1,5 +1,18 @@
 # 📱 Android APK Builder - No Android Studio Required!
 
+[![Build Status](https://github.com/wasishah33/android-apk-builder/actions/workflows/android-build.yml/badge.svg?branch=main)](https://github.com/wasishah33/android-apk-builder/actions/workflows/android-build.yml)
+[![License](https://img.shields.io/github/license/wasishah33/android-apk-builder)](LICENSE)
+[![Stars](https://img.shields.io/github/stars/wasishah33/android-apk-builder?style=social)](https://github.com/wasishah33/android-apk-builder/stargazers)
+[![Forks](https://img.shields.io/github/forks/wasishah33/android-apk-builder?style=social)](https://github.com/wasishah33/android-apk-builder/network/members)
+[![Open Issues](https://img.shields.io/github/issues/wasishah33/android-apk-builder)](https://github.com/wasishah33/android-apk-builder/issues)
+[![Open PRs](https://img.shields.io/github/issues-pr/wasishah33/android-apk-builder)](https://github.com/wasishah33/android-apk-builder/pulls)
+[![Last Commit](https://img.shields.io/github/last-commit/wasishah33/android-apk-builder)](https://github.com/wasishah33/android-apk-builder/commits)
+
+![Kotlin](https://img.shields.io/badge/Kotlin-1.9-7F52FF?logo=kotlin&logoColor=white)
+![Gradle](https://img.shields.io/badge/Gradle-8.0-02303A?logo=gradle&logoColor=white)
+![Android](https://img.shields.io/badge/Android-API%2021%2B-3DDC84?logo=android&logoColor=white)
+![CI/CD](https://img.shields.io/badge/GitHub%20Actions-Ready-2088FF?logo=github-actions&logoColor=white)
+
 > **Build Android APKs using GitHub Actions without installing Android Studio locally**
 
 A complete Android project template that demonstrates how to build APK files using GitHub Actions. Perfect for developers who want to create Android apps without setting up the full Android development environment locally.
