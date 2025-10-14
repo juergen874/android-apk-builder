@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity() {
             countText.text = "Button clicked $clickCount times"
             
             if (clickCount % 5 == 0) {
-                Toast.makeText(this, "Wow! You've clicked $clickCount times!", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Wow! You've klicken clicked $clickCount times!", Toast.LENGTH_SHORT).show()
             }
         }
     }
