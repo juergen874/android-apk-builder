@@ -1,13 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <!-- Internet permission (falls die Seite externe Ressourcen lädt) -->
+    <!-- Internet permission (for loading external resources from the web) -->
     <uses-permission android:name="android.permission.INTERNET" />
 
-    <!-- Optional: Legacy external storage read permission.
-         Viele moderne Apps nutzen SAF (ACTION_OPEN_DOCUMENT) und benötigen keine Runtime-Permission,
-         aber für ältere / spezielle Implementationen kann das nützlich sein. -->
+    <!-- Optional: Legacy external storage read permission. -->
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <!-- Permission to write to external storage (required for file downloads to device storage on Android <10) -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        android:maxSdkVersion="28" />
+
+    <!-- Permission for download manager to access files -->
+    <uses-permission android:name="android.permission.ACCESS_DOWNLOAD_MANAGER" tools:ignore="MissingPermission" />
 
     <application
         android:allowBackup="true"
@@ -28,6 +33,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- (Optional) Register DownloadManager receiver for notifications, only if needed
+        <receiver android:name="android.app.DownloadManager$Receiver" android:exported="false"/>
+        -->
 
     </application>
 </manifest>
