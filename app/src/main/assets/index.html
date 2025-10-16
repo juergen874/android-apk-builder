@@ -3,70 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bilder im Stapel verkleinern</title>
-    <link rel="manifest" href="manifest.json">
+    <title>HTML Viewer</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            margin: 20px;
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
         }
-
-        input, button {
-            margin: 10px;
+        #output {
+            width: 100%;
+            height: 100%;
+            border: none;
         }
-
-        img {
-            margin: 10px;
-            max-width: 100%;
-            height: auto;
+        #controls {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            z-index: 1000;
         }
     </style>
 </head>
 <body>
-    <h1>Bilder im Stapel verkleinern</h1>
-    <input type="file" id="fileInput" multiple>
-    <button onclick="resizeImages()">Bilder verkleinern</button>
-    <div id="output"></div>
+    <div id="controls">
+        <button onclick="openFile()">Datei öffnen</button>
+    </div>
+    <iframe id="output"></iframe>
+
     <script>
-        function resizeImages() {
-            const fileInput = document.getElementById('fileInput');
-            const output = document.getElementById('output');
-            output.innerHTML = '';
-
-            const files = fileInput.files;
-            const maxWidth = 800; // Maximale Breite der verkleinerten Bilder
-
-            Array.from(files).forEach(file => {
-                const reader = new FileReader();
-                reader.onload = function(event) {
-                    const img = new Image();
-                    img.onload = function() {
-                        const canvas = document.createElement('canvas');
-                        const ctx = canvas.getContext('2d');
-
-                        const scaleFactor = maxWidth / img.width;
-                        canvas.width = maxWidth;
-                        canvas.height = img.height * scaleFactor;
-
-                        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-
-                        const resizedImage = canvas.toDataURL('image/jpeg');
-                        const imgElement = document.createElement('img');
-                        imgElement.src = resizedImage;
-                        output.appendChild(imgElement);
-
-                        // Download the resized image
-                        const link = document.createElement('a');
-                        link.href = resizedImage;
-                        link.download = 's-' + file.name;
-                        link.click();
-                    };
-                    img.src = event.target.result;
+        function openFile() {
+            var input = document.createElement('input');
+            input.type = 'file';
+            input.accept = '.html';
+            input.onchange = function(event) {
+                var file = event.target.files[0];
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    localStorage.setItem('lastHtmlContent', e.target.result);
+                    document.getElementById('output').srcdoc = e.target.result;
                 };
-                reader.readAsDataURL(file);
-            });
+                reader.readAsText(file);
+            };
+            input.click();
         }
+
+        window.onload = function() {
+            var lastContent = localStorage.getItem('lastHtmlContent');
+            if (lastContent) {
+                document.getElementById('output').srcdoc = lastContent;
+            }
+        };
     </script>
 </body>
 </html>
