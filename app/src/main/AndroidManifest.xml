@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.juergen874.localwebview">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
     <!-- Internet permission (falls die Seite externe Ressourcen lädt) -->
     <uses-permission android:name="android.permission.INTERNET" />
